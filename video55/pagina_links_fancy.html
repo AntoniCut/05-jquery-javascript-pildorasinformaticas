@@ -1,0 +1,80 @@
+<!doctype html>
+<html>
+
+<head>
+	<meta charset="utf-8">
+	<title> Video 55 - Ventanas Emergentes e Iframes III - Curso jQuery y JavaScript Pildorás Informáticas </title>
+
+	<style>
+		
+		body { background-color: #06C;	}
+
+		#principal { margin: 50px 0 0 75px;	}
+
+		h1 { color: #FFF; }
+
+		ul { list-style: none; }
+
+		ul li {
+			font-size: 1.3em;
+			margin-bottom: 5px;
+		}
+
+		li a:link { color: #FFF; }
+
+		li a:visited { color: #FFF; }
+
+		li a:hover { color: #F00; }
+
+	</style>
+
+	<!--  **********  Importacion Libreria 'jQuery' y 'FancyBox'  **********  -->
+	<link rel="stylesheet" href="/jquery-librerias/fancybox/jquery.fancybox-1.3.4.css">
+	<!-- <script src="/jquery-librerias/jquery-3.7.1.min.js"></script> -->
+	<script src="/jquery-librerias/jquery-1.6.3.min.js"></script>
+	<script src="/jquery-librerias/fancybox/jquery.fancybox-1.3.4.js" > </script>
+
+</head>
+
+<body>
+
+	<div id="principal">
+
+		<h1>Links con Fancy</h1>
+
+		<ul>
+			<li> <a href="http://www.pildorasinformaticas.com" title="Píldoras" class="iframe"> Píldoras informáticas </a> </li>
+			<li> <a href="http://www.marca.com" title="pais" class="iframe"> Diario Marca </a> </li>
+			<li> <a href="http://www.as.com/" title="abc" class="iframe"> Diario AS </a> </li>
+			<li> <a href="http://www.mundodeportivo.es/" title="La Razón" class="iframe"> Mundo Deportivo </a> </li>
+			<li> <a href="http://www.nba.com/" title="El Mundo" class="iframe"> NBA </a> </li>
+		</ul>
+	</div>
+
+
+	<!--  **********  Código jQuery  **********  -->
+	<script>
+		
+		$(document).ready(function () {
+			
+			console.log("Documento Cargado");
+
+			$(".iframe").fancybox({
+
+				// type:         "iframe",
+				width:         "90%",
+				height:        "90%",
+				titlePosition: "outside",
+				/*
+				onCleanup: function() {
+                    console.log("Función de limpieza llamada");
+				}
+					*/
+			});
+		});
+
+	</script>
+
+</body>
+
+</html>
