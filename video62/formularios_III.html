@@ -3,7 +3,7 @@
 
 <head>
   <meta charset="utf-8">
-  <title> Video 61 - Formularios y Eventos - jQuery y JavaScript PildorasInformaticas </title>
+  <title> Video 62 - Formularios y Eventos - jQuery y JavaScript PildorasInformaticas </title>
 
   <style>
     body {
@@ -25,11 +25,14 @@
       text-align: center;
     }
 
-    #tarjeta, #fecha_tarjeta, #email {
-      background-color: #f93;
+    #tarjeta,
+    #fecha_tarjeta,
+    #email,
+    #n_tarjeta,
+    #f_tarjeta,
+    #e_mail {
+      visibility: hidden;
     }
-
-
   </style>
 
   <script src="/jquery-librerias/jquery-1.6.3.min.js"> </script>
@@ -96,19 +99,19 @@
               <tr>
                 <td><label for="tarjeta" id="n_tarjeta">Nº tarjeta</label></td>
                 <td>
-                  <input type="text" name="tarjeta" id="tarjeta" disabled>
+                  <input type="text" name="tarjeta" id="tarjeta">
                 </td>
               </tr>
               <tr>
                 <td align="left"><label for="fecha_tarjeta" id="f_tarjeta">Fecha Expiración</label></td>
                 <td>
-                  <input type="text" name="fecha_tarjeta" id="fecha_tarjeta" disabled>
+                  <input type="text" name="fecha_tarjeta" id="fecha_tarjeta">
                 </td>
               </tr>
               <tr>
                 <td><label for="email" id="e_mail">Email</label></td>
                 <td>
-                  <input type="text" name="email" id="email" disabled>
+                  <input type="text" name="email" id="email">
                 </td>
               </tr>
             </table>
@@ -150,27 +153,34 @@
 
     console.log("Documento Cargado!");
 
+
     $("#paypal").click(function () {
 
-      $("#email").attr("disabled", false).focus().css("background-color", "#fff");
-      $("#tarjeta").attr("disabled", true).css("background-color", "#f93");;
-      $("#fecha_tarjeta").attr("disabled", true).css("background-color", "#f93");;
+      $("#tarjeta").css("visibility", "hidden");  //  cuadro texto.
+      $("#n_tarjeta").css("visibility", "hidden");  //  label cuadro texto.
+      
+      $("#fecha_tarjeta").css("visibility", "hidden");  //  cuadro texto.
+      $("#f_tarjeta").css("visibility", "hidden");  //  label cuadro texto.
+      
+      $("#email").css("visibility", "visible").focus();  //  cuadro texto.
+      $("#e_mail").css("visibility", "visible");  //  label cuadro texto.
 
     });
 
-    $("#master").click(function () {
 
-      $("#tarjeta").attr("disabled", false).focus().css("background-color", "#fff");;
-      $("#fecha_tarjeta").attr("disabled", false).css("background-color", "#fff");;
-      $("#email").attr("disabled", true).css("background-color", "#f93").val("");
 
-    });
 
-    $("#visa ").click(function () {
+    $("#master, #visa").click(function () {
 
-      $("#tarjeta").attr("disabled", false).focus().css("background-color", "#fff");;
-      $("#fecha_tarjeta").attr("disabled", false).css("background-color", "#fff");;
-      $("#email").attr("disabled", true).css("background-color", "#f93").val("");
+      $("#tarjeta").css("visibility", "visible").focus();  //  cuadro texto.
+      $("#n_tarjeta").css("visibility", "visible");  //  label cuadro texto.
+
+      $("#fecha_tarjeta").css("visibility", "visible");  //  cuadro texto.
+      $("#f_tarjeta").css("visibility", "visible");  //  label cuadro texto.
+
+      $("#email").css("visibility", "hidden");  //  cuadro texto.
+      $("#e_mail").css("visibility", "hidden");  //  label cuadro texto.
+
     });
 
   });
