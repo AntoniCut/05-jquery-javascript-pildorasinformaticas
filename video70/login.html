@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="UTF-8">
+	<title> Video 70, 71 y 72 - Login - Funciones Get() y Post() - AJAX - jQuery y JavaScript PildorasInformaticas </title>
+	<link href="externa.css" rel="stylesheet">
+
+	<style>
+		#noticias li {
+			display: inline-block;
+			margin-right: 30px;
+		}
+
+		#noticias li a {
+			padding: 5px 10px;
+			background-color: white;
+			color: black;
+			text-decoration: none;
+		}
+
+		#noticias li a:hover {
+			background-color: rgb(255, 153, 0);
+			color: white;
+		}
+
+		#contenidos_externos #noticia {
+			margin-top: 10px;
+			padding: 20px;
+			border: 1px solid white;
+		}
+	</style>
+
+	<!--  **********  Librerya jQuery y Plugin .js para Validar Formularios  **********  -->
+	<script src="/jquery-librerias/jquery-3.7.1.min.js"></script>
+	<!-- <script src="jquery.validate.min.js"> </script> -->
+
+</head>
+
+<body>
+
+	<div class="cabecera">
+		<p class="logo">Procesando respuesta del servidor</p>
+	</div>
+
+	<div class="contenido">
+		
+		<div class="principal">
+			<form method="get" action="login.php" id="login">
+				<table>
+					<tr>
+						<td>
+							<label for="usuario"> Usuario: </label>
+						</td>
+						<td>
+							<input type="text" name="usuario" id="usuario">
+						</td>
+					</tr>
+					<tr>
+						<td>
+							<label for="contra"> Contaseña: </label>
+						</td>
+						<td>
+							<input type="text" name="contra" id="contra">
+						</td>
+					</tr>
+					<tr>
+						<td colspan="2" align="center">
+							<input type="submit" name="boton" id="boton" value="Enviar">
+						</td>
+					</tr>
+				</table>
+			</form>
+
+			<div id="contenidos_externos"></div>
+
+		</div>
+
+	</div>
+
+
+	<!--  **********  Código jQuery  **********  -->
+	<script>
+
+		$(document).ready(function () {
+
+			console.log("Documento Cargado!");
+
+			$("#login").submit(function() { 
+				
+				/*
+				var datosFormulario = {
+					usuario: $("#usuario").val(),
+					contra:  $("#contra").val()
+				};
+				*/
+
+				var datosFormulario = $(this).serialize();
+
+				// $.get("https://www.antonydev.es/pruebas-ajax/video70/login.php", datosFormulario, procesarDatos);
+				$.get("login.php", datosFormulario, procesarDatos)
+				 .fail(procesarError);
+				return false;
+			});
+
+			function procesarDatos(datos_devueltos) {
+
+				if(datos_devueltos == "autorizado") $("#contenidos_externos").html("<p> Usuario Correcto, Bienvenido de Nuevo </p>");
+				else $("#contenidos_externos").html("<p> Usuario No Autorizado </p>");
+			}
+
+			function procesarError() {
+
+				var msgError = "Ooops!! Ha ocurrido algo inesperado. Por favor, intentalo mas tarde";
+				$("#contenidos_externos").html("<p>" + msgError + "</p>");
+			}
+												
+		});
+
+	</script>
+
+</body>
+
+</html>

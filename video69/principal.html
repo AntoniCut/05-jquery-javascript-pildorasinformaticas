@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="UTF-8">
+	<title> Video 69 - Noticias Varias - Función Load() - AJAX - jQuery y JavaScript PildorasInformaticas </title>
+	<link href="externa.css" rel="stylesheet">
+
+	<style>
+		#noticias li {
+			display: inline-block;
+			margin-right: 30px;
+		}
+
+		#noticias li a {
+			padding: 5px 10px;
+			background-color: white;
+			color: black;
+			text-decoration: none;
+		}
+
+		#noticias li a:hover {
+			background-color: rgb(255, 153, 0);
+			color: white;
+		}
+
+		#contenidos_externos #noticia {
+			margin-top: 10px;
+			padding: 20px;
+			border: 1px solid white;
+		}
+	</style>
+
+	<!--  **********  Librerya jQuery y Plugin .js para Validar Formularios  **********  -->
+	<script src="/jquery-librerias/jquery-3.7.1.min.js"></script>
+	<!-- <script src="jquery.validate.min.js"> </script> -->
+
+</head>
+
+<body>
+
+	<div class="cabecera">
+		<p class="logo">Píldoras informáticas. Función load()</p>
+	</div>
+
+	<div class="contenido">
+		
+		<div class="principal">
+			
+			<h1>Noticias varias</h1>
+		
+			<ul id="noticias">
+				<li> <a href="https://www.antonydev.es/pruebas-ajax/video69/generales.html"> Noticias Generales </a> </li>
+				<li> <a href="https://www.antonydev.es/pruebas-ajax/video69/deportivas.html"> Noticias Deportivas </a> </li>
+				<li> <a href="https://www.antonydev.es/pruebas-ajax/video69/tiempo.html"> Noticias del Tiempo </a> </li>
+			</ul>
+			
+			<div id="contenidos_externos"></div>
+
+		</div>
+	</div>
+
+	<!--  **********  Código jQuery  **********  -->
+	<script>
+		
+		$(document).ready(function () {
+			
+			console.log("Documento Cargado!");
+			
+			$("#noticias a").click(function() {
+				
+				var href = $(this).attr("href");
+				var url = href.split("/").pop();  // Extraer el nombre del archivo.
+				
+				$("#contenidos_externos").load(url + " #noticia");
+				return false;
+
+			});
+			
+		});
+
+	</script>
+
+</body>
+
+</html>
